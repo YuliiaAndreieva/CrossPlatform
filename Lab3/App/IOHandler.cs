@@ -38,10 +38,8 @@ public static class IOHandler
 
     public static void WriteResult(int result)
     {
-        using (var writer = new StreamWriter(OutputFileName))
-        {
-            writer.WriteLine(result >= 0 ? result.ToString() : "Sleep");
-        }
+        using var writer = new StreamWriter(OutputFileName);
+        writer.WriteLine(result >= 0 ? result.ToString() : "Sleep");
     }
     
 }
