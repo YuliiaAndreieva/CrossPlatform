@@ -1,11 +1,10 @@
-﻿
-using System.Text;
+﻿using System.Text;
 using App;
 
 Console.OutputEncoding = Encoding.Unicode;
 
-int result = 0, n = 0;
-List<(int ai, int bi)> suppliers = new List<(int ai, int bi)>();
+int result, n;
+List<(int ai, int bi)> suppliers;
 try
 {
     (n, suppliers)  = IOHandler.ReadInputData();
@@ -13,6 +12,7 @@ try
 catch (Exception e)
 {
     Console.WriteLine($"Error occured while reading file: {e.Message}");
+    return;
 }
 
 try
@@ -23,6 +23,7 @@ try
 catch(Exception e)
 {
     Console.WriteLine($"Error occured while solving this task: {e.Message}");
+    return;
 }
 
 try

@@ -5,8 +5,6 @@ namespace Tests;
 
 public class BinarySequenceServiceTests(ITestOutputHelper output)
 {
-    private readonly ITestOutputHelper _output = output;
-
     [Theory]
     [InlineData(1, 7)]    
     [InlineData(2, 11)]   
@@ -19,9 +17,9 @@ public class BinarySequenceServiceTests(ITestOutputHelper output)
     public void FindNthNumberWithThreeOnes_ReturnsCorrectValue(int n, int expected)
     {
         // Act
-        _output.WriteLine($"Finding {n}-th number with three '1's in binary...");
+        output.WriteLine($"Finding {n}-th number with three '1's in binary...");
         int result = BinarySequenceService.FindNthNumberWithThreeOnes(n);
-        _output.WriteLine($"Expected: {expected}, Actual: {result}");
+        output.WriteLine($"Expected: {expected}, Actual: {result}");
 
         // Assert
         Assert.Equal(expected, result);
@@ -33,7 +31,7 @@ public class BinarySequenceServiceTests(ITestOutputHelper output)
     public void FindNthNumberWithThreeOnes_ThrowsException_WhenNIsLessThan1(int n)
     {
         // Act & Assert
-        _output.WriteLine($"Checking for exception with input: {n}");
+        output.WriteLine($"Checking for exception with input: {n}");
         Assert.Throws<Exceptions.InputException>(() => BinarySequenceService.FindNthNumberWithThreeOnes(n));
     }
 
@@ -50,9 +48,9 @@ public class BinarySequenceServiceTests(ITestOutputHelper output)
     public void CountOnesInBinary_ReturnsCorrectCount(int number, int expectedCount)
     {
         // Act
-        _output.WriteLine($"Counting ones in binary representation of {number}...");
+        output.WriteLine($"Counting ones in binary representation of {number}...");
         int result = BinarySequenceService.CountOnesInBinary(number);
-        _output.WriteLine($"Binary representation: {Convert.ToString(number, 2)}, Expected count: {expectedCount}, Actual count: {result}");
+        output.WriteLine($"Binary representation: {Convert.ToString(number, 2)}, Expected count: {expectedCount}, Actual count: {result}");
 
         // Assert
         Assert.Equal(expectedCount, result);
@@ -63,12 +61,12 @@ public class BinarySequenceServiceTests(ITestOutputHelper output)
     public void CountOnesInBinary_ReturnsCorrectCount_ForLargeNumber(int number, int expectedCount)
     {
         // Act
-        _output.WriteLine($"Counting ones for large number {number}...");
+        output.WriteLine($"Counting ones for large number {number}...");
         string binaryRepresentation = Convert.ToString(number, 2);
-        _output.WriteLine($"Binary representation: {binaryRepresentation} (Length: {binaryRepresentation.Length})");
+        output.WriteLine($"Binary representation: {binaryRepresentation} (Length: {binaryRepresentation.Length})");
 
         int result = BinarySequenceService.CountOnesInBinary(number);
-        _output.WriteLine($"Expected count of '1's: {expectedCount}, Actual count of '1's: {result}");
+        output.WriteLine($"Expected count of '1's: {expectedCount}, Actual count of '1's: {result}");
 
         // Assert
         Assert.Equal(expectedCount, result);
@@ -80,12 +78,12 @@ public class BinarySequenceServiceTests(ITestOutputHelper output)
     public void CountOnesInBinary_ReturnsCorrectCount_ForComplexNumbers(int number, int expectedCount)
     {
         // Act
-        _output.WriteLine($"Counting ones for complex number {number}...");
+        output.WriteLine($"Counting ones for complex number {number}...");
         string binaryRepresentation = Convert.ToString(number, 2);
-        _output.WriteLine($"Binary representation: {binaryRepresentation}");
+        output.WriteLine($"Binary representation: {binaryRepresentation}");
 
         int result = BinarySequenceService.CountOnesInBinary(number);
-        _output.WriteLine($"Expected count of '1's: {expectedCount}, Actual count of '1's: {result}");
+        output.WriteLine($"Expected count of '1's: {expectedCount}, Actual count of '1's: {result}");
 
         // Assert
         Assert.Equal(expectedCount, result);

@@ -2,56 +2,32 @@
 
 public static class SocksPurchaseService
 {
-    public static List<(int ai, int bi)> SortSuppliersByPrice(List<(int ai, int bi)> suppliers)
-    {
-        if (suppliers == null || !suppliers.Any())
-        {
-            throw new ArgumentException("Suppliers list is empty or null.");
-        }
-        
-        return suppliers.OrderBy(s => s.bi / (double)s.ai).ToList();
-    }
-    
     public static int CalculateMinimumCost(int n, List<(int ai, int bi)> suppliers)
     {
         if (n <= 0)
-        {
             throw new ArgumentOutOfRangeException(nameof(n), "The number of socks should be greater than zero.");
-        }
         
-        if (suppliers == null || suppliers.Count == 0)
-        {
+        if (suppliers is null || suppliers.Count == 0)
             throw new ArgumentException("Suppliers list cannot be empty.");
-        }
         
-        var sortedSuppliers = SortSuppliersByPrice(suppliers);
-
-        int totalCost = 0;
-        int remainingSocks = n;
+        const int inf = int.MaxValue;
+        int maxAi = suppliers.Max(supplier => supplier.ai);
+        int maxN = n + maxAi;
+        int[] dp = new int[maxN + 1];
+        Array.Fill(dp, inf);
+        dp[0] = 0;
         
-        foreach (var supplier in sortedSuppliers)
+        foreach (var (ai, bi) in suppliers)
         {
-            int packSize = supplier.ai;
-            int packPrice = supplier.bi;
-            
-            if (remainingSocks <= packSize)
+            for (int amount = ai; amount <= maxN; amount++)
             {
-                totalCost += packPrice;
-                remainingSocks = 0; 
-                break;
+                if (dp[amount - ai] is not inf)
+                    dp[amount] = Math.Min(dp[amount], dp[amount - ai] + bi);
             }
-            
-            int packsToBuy = remainingSocks / packSize;
-            totalCost += packsToBuy * packPrice;
-            
-            remainingSocks -= packsToBuy * packSize;
         }
         
-        if (remainingSocks > 0)
-        {
-            totalCost += sortedSuppliers[0].bi;
-        }
+        int minCost = dp.Skip(n).Take(maxN - n + 1).Min();
 
-        return totalCost;
+        return minCost;
     }
 }

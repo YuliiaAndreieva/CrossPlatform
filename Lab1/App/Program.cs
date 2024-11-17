@@ -3,7 +3,7 @@ using App;
 
 Console.OutputEncoding = Encoding.Unicode;
 
-int n = 0, nthValue = 0;
+int n, nthValue;
 try
 {
     n = IOHandler.ReadNValue();
@@ -11,6 +11,7 @@ try
 catch (Exception e)
 {
     Console.WriteLine($"Error occured while reading file: {e.Message}");
+    return;
 }
 
 try
@@ -21,6 +22,7 @@ try
 catch(Exception e)
 {
     Console.WriteLine($"Error occured while solving this task: {e.Message}");
+    return;
 }
 
 try
