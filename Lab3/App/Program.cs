@@ -6,17 +6,22 @@ Console.OutputEncoding = Encoding.Unicode;
 int result = -1; 
 try
 {
-    var (rows, cols, keyPrices, labyrinth) = IOHandler.ReadInputData();
+    var inputData = IOHandler.ReadInputData();
+    int rows = inputData.rows;
+    int cols = inputData.cols;
+    int[] keyPrices = inputData.keyPrices;
+    char[] labyrinth1D = inputData.labyrinth;
     
-    var solver = TaskSolverService.Create(rows, cols, keyPrices, labyrinth);
+    MazeSolver solver = new MazeSolver(rows, cols, keyPrices, labyrinth1D);
     
-    (int startRow, int startCol) = FindStartPosition(labyrinth, rows, cols);
+    result = solver.FindMinimumCost();
     
-    result = solver.FindMinimumCostToExit((startRow, startCol));
+    Console.WriteLine(result);
 }
 catch (Exception e)
 {
     Console.WriteLine($"Error occurred while processing: {e.Message}");
+    return;
 }
 
 try
@@ -26,21 +31,4 @@ try
 catch (Exception e)
 {
     Console.WriteLine($"Error occurred while writing result: {e.Message}");
-}
-
-
-static (int row, int col) FindStartPosition(char[] labyrinth, int rows, int cols)
-{
-    for (int r = 0; r < rows; r++)
-    {
-        for (int c = 0; c < cols; c++)
-        {
-            if (labyrinth[r * cols + c] == 'S')
-            {
-                return (r, c); 
-            }
-        }
-    }
-
-    return (0, 0);
 }

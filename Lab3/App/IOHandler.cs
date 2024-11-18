@@ -9,18 +9,21 @@ public static class IOHandler
     {
         using var reader = new StreamReader(InputFileName);
         var dimensions = reader.ReadLine()?.Split();
-        int rows = int.Parse(dimensions?[0] ?? string.Empty);
-        int cols = int.Parse(dimensions?[1] ?? string.Empty);
-            
-        var keyPrices = Array.ConvertAll(reader.ReadLine()?.Split() ?? Array.Empty<string>(), int.Parse);
-            
+        int rows = int.Parse(dimensions?[0] ?? throw new InvalidDataException("There are not enough data"));
+        int cols = int.Parse(dimensions?[1] ?? throw new InvalidDataException("There are not enough data"));
+                
+        var keyPrices = Array.ConvertAll(reader.ReadLine()?.Split() ?? throw new InvalidDataException("There are not enough data for keys"), int.Parse);
+                
         char[,] labyrinth2D = new char[rows, cols];
         for (int r = 0; r < rows; r++)
         {
             string? line = reader.ReadLine();
+            if (line == null || line.Length < cols)
+                throw new InvalidDataException($"There are not enough symbols in line {r + 1}");
+                
             for (int c = 0; c < cols; c++)
             {
-                if (line != null) labyrinth2D[r, c] = line[c];
+                labyrinth2D[r, c] = line[c];
             }
         }
             
