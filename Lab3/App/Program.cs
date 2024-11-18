@@ -7,16 +7,8 @@ int result = -1;
 try
 {
     var inputData = IOHandler.ReadInputData();
-    int rows = inputData.rows;
-    int cols = inputData.cols;
-    int[] keyPrices = inputData.keyPrices;
-    char[] labyrinth1D = inputData.labyrinth;
-    
-    MazeSolver solver = new MazeSolver(rows, cols, keyPrices, labyrinth1D);
-    
+    MazeSolver solver = new MazeSolver(inputData.rows, inputData.cols, inputData.keyPrices, inputData.labyrinth);
     result = solver.FindMinimumCost();
-    
-    Console.WriteLine(result);
 }
 catch (Exception e)
 {
