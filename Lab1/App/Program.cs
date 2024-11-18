@@ -1,9 +1,11 @@
-﻿using System.Text;
+﻿using System.Numerics;
+using System.Text;
 using App;
 
 Console.OutputEncoding = Encoding.Unicode;
 
-int n, nthValue;
+int n;
+BigInteger nthValue;
 try
 {
     n = IOHandler.ReadNValue();

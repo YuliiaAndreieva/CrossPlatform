@@ -1,35 +1,89 @@
-﻿namespace App;
+﻿using System.Numerics;
+
+namespace App;
 
 public static class BinarySequenceService
 {
-    private const int StartNValue = 7;
-
-    public static int CountOnesInBinary(int number)
+    public static BigInteger FindNthNumberWithThreeOnes(long n)
     {
-        return Convert.ToString(number, 2).Count(c => c == '1');
+        if (n <= 0)
+            throw new ArgumentException("N must be a positive integer.");
+        
+        long r = FindR(n);
+        
+        long cR3 = BinomialCoefficient(r, 3);
+        long nPrime = n - cR3;
+
+        if(nPrime <= 0)
+            throw new ArgumentException("N is too small.");
+        
+        (long p, long q) = FindPQ(r, nPrime);
+        
+        BigInteger number = ComputeNumber(p, q, r);
+        return number;
     }
     
-    public static int FindNthNumberWithThreeOnes(int n)
+    public static long FindR(long n)
     {
-        if (n is 0 or < 0)
-        {
-            throw new Exceptions.InputException("Input contains invalid integer.");
-        }
-        
-        int count = 0;
-        int number = StartNValue;  
+        long left = 2;
+        long right = 1000000;
+        long r = 0;
 
-        while (true)
+        while(left <= right)
         {
-            if (CountOnesInBinary(number) == 3) 
+            long mid = left + (right - left) / 2;
+            long combinations = BinomialCoefficient(mid + 1, 3);
+            if(combinations >= n)
             {
-                count++;
-                if (count == n)
+                r = mid;
+                right = mid - 1;
+            }
+            else
+            {
+                left = mid + 1;
+            }
+        }
+
+        return r;
+    }
+    
+    public static long BinomialCoefficient(long n, int k)
+    {
+        if (k < 0 || k > n)
+            return 0; 
+        if (k == 0 || k == n)
+            return 1; 
+        
+        k = Math.Min(k, (int)n - k);
+
+        long result = 1;
+        
+        for (int i = 0; i < k; i++)
+            result = result * (n - i) / (i + 1);
+
+        return result;
+    }
+    
+    public static (long p, long q) FindPQ(long r, long nPrime)
+    {
+        for(long q = 1; q < r; q++)
+        {
+            for(long p = 0; p < q; p++)
+            {
+                nPrime--;
+
+                if(nPrime is 0)
                 {
-                    return number;
+                    return (p, q);
                 }
             }
-            number++;
         }
+
+        throw new ArgumentException("N is too large.");
+    }
+    
+    public static BigInteger ComputeNumber(long p, long q, long r)
+    {
+        return (BigInteger.One << (int)p) | (BigInteger.One << (int)q) | (BigInteger.One << (int)r);
     }
 }

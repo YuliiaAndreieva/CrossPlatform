@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Numerics;
 
 namespace App;
 
@@ -42,7 +43,7 @@ public static class IOHandler
         return n;
     }
     
-    public static void WriteResult(int result)
+    public static void WriteResult(BigInteger result)
     {
         File.WriteAllText(OutputFileName, result.ToString(CultureInfo.InvariantCulture));
     }

@@ -1,4 +1,5 @@
-﻿using App;
+﻿using System.Numerics;
+using App;
 using Xunit.Abstractions;
 
 namespace Tests;
@@ -14,78 +15,109 @@ public class BinarySequenceServiceTests(ITestOutputHelper output)
     [InlineData(6, 21)]   
     [InlineData(7, 22)]   
     [InlineData(8, 25)]
+    [InlineData(10, 28)]
     public void FindNthNumberWithThreeOnes_ReturnsCorrectValue(int n, int expected)
     {
         // Act
         output.WriteLine($"Finding {n}-th number with three '1's in binary...");
-        int result = BinarySequenceService.FindNthNumberWithThreeOnes(n);
+        var result = BinarySequenceService.FindNthNumberWithThreeOnes(n);
         output.WriteLine($"Expected: {expected}, Actual: {result}");
 
         // Assert
         Assert.Equal(expected, result);
     }
-
+    
     [Theory]
-    [InlineData(0)]  
-    [InlineData(-1)] 
-    public void FindNthNumberWithThreeOnes_ThrowsException_WhenNIsLessThan1(int n)
+    [InlineData(5, 3, 10)]
+    [InlineData(4, 2, 6)]
+    [InlineData(6, 3, 20)]
+    [InlineData(10, 0, 1)]
+    [InlineData(10, 10, 1)]
+    public void BinomialCoefficient_ValidInputs_ReturnsExpected(long n, int k, long expected)
+    {
+        // Act
+        long result = BinarySequenceService.BinomialCoefficient(n, k);
+
+        // Assert
+        Assert.Equal(expected, result);
+    }
+    
+    [Theory]
+    [InlineData(5, -1)]
+    [InlineData(5, 6)]
+    [InlineData(3, 4)]
+    public void BinomialCoefficient_InvalidInputs_ReturnsZero(long n, int k)
+    {
+        // Act
+        long result = BinarySequenceService.BinomialCoefficient(n, k);
+
+        // Assert
+        Assert.Equal(0, result);
+    }
+    
+    [Theory]
+    [InlineData(1, 2)]   // C(3,3)=1 >=1
+    [InlineData(4, 3)]   // C(4,3)=4 >=4
+    [InlineData(6, 4)]   // C(5,3)=10 >=6
+    [InlineData(10, 4)]  // C(5,3)=10 >=10
+    [InlineData(11, 5)]  // C(6,3)=20 >=11
+    public void FindR_ValidInputs_ReturnsExpected(long n, long expectedR)
+    {
+        // Act
+        long r = BinarySequenceService.FindR(n);
+
+        // Assert
+        Assert.Equal(expectedR, r);
+    }
+    
+    [Theory]
+    [InlineData(4, 1, 0, 1)] // r=4, nPrime=1 → p=0, q=1 → number=19
+    [InlineData(4, 2, 0, 2)] // r=4, nPrime=2 → p=0, q=2 → number=21
+    [InlineData(4, 3, 1, 2)] // r=4, nPrime=3 → p=1, q=2 → number=22
+    [InlineData(4, 4, 0, 3)] // r=4, nPrime=4 → p=0, q=3 → number=25
+    [InlineData(4, 5, 1, 3)] // r=4, nPrime=5 → p=1, q=3 → number=26
+    [InlineData(4, 6, 2, 3)] // r=4, nPrime=6 → p=2, q=3 → number=28
+    public void FindPQ_ValidInputs_ReturnsExpected(long r, long nPrime, long expectedP, long expectedQ)
+    {
+        // Act
+        (long p, long q) = BinarySequenceService.FindPQ(r, nPrime);
+
+        // Assert
+        Assert.Equal(expectedP, p);
+        Assert.Equal(expectedQ, q);
+    }
+    
+    [Theory]
+    [InlineData(4, 0)]
+    [InlineData(5, -1)]
+    public void FindPQ_InvalidInputs_ThrowsArgumentException(long r, long nPrime)
     {
         // Act & Assert
-        output.WriteLine($"Checking for exception with input: {n}");
-        Assert.Throws<Exceptions.InputException>(() => BinarySequenceService.FindNthNumberWithThreeOnes(n));
-    }
-
-    [Theory]
-    [InlineData(0, 0)]    
-    [InlineData(1, 1)]    
-    [InlineData(2, 1)]    
-    [InlineData(3, 2)]   
-    [InlineData(7, 3)]    
-    [InlineData(8, 1)]    
-    [InlineData(13, 3)]   
-    [InlineData(255, 8)]  
-    [InlineData(1023, 10)] 
-    public void CountOnesInBinary_ReturnsCorrectCount(int number, int expectedCount)
-    {
-        // Act
-        output.WriteLine($"Counting ones in binary representation of {number}...");
-        int result = BinarySequenceService.CountOnesInBinary(number);
-        output.WriteLine($"Binary representation: {Convert.ToString(number, 2)}, Expected count: {expectedCount}, Actual count: {result}");
-
-        // Assert
-        Assert.Equal(expectedCount, result);
+        Assert.Throws<ArgumentException>(() => BinarySequenceService.FindPQ(r, nPrime));
     }
     
     [Theory]
-    [InlineData(2147483647, 31  )]   
-    public void CountOnesInBinary_ReturnsCorrectCount_ForLargeNumber(int number, int expectedCount)
+    [InlineData(0, 1, 2, 7)]    // 2^0 + 2^1 + 2^2 = 1 + 2 + 4 = 7
+    [InlineData(0, 1, 3, 11)]   // 2^0 + 2^1 + 2^3 = 1 + 2 + 8 = 11
+    [InlineData(0, 2, 3, 13)]   // 2^0 + 2^2 + 2^3 = 1 + 4 + 8 = 13
+    [InlineData(1, 2, 3, 14)]   // 2^1 + 2^2 + 2^3 = 2 + 4 + 8 = 14
+    [InlineData(0, 1, 4, 19)]   // 2^0 + 2^1 + 2^4 = 1 + 2 + 16 = 19
+    public void ComputeNumber_ValidInputs_ReturnsExpected(long p, long q, long r, long expected)
     {
         // Act
-        output.WriteLine($"Counting ones for large number {number}...");
-        string binaryRepresentation = Convert.ToString(number, 2);
-        output.WriteLine($"Binary representation: {binaryRepresentation} (Length: {binaryRepresentation.Length})");
-
-        int result = BinarySequenceService.CountOnesInBinary(number);
-        output.WriteLine($"Expected count of '1's: {expectedCount}, Actual count of '1's: {result}");
+        BigInteger number = BinarySequenceService.ComputeNumber(p, q, r);
 
         // Assert
-        Assert.Equal(expectedCount, result);
+        Assert.Equal(expected, (long)number);
     }
     
     [Theory]
-    [InlineData(123, 6)]   // Test for a medium number with six '1's in binary (1111011)
-    [InlineData(1024, 1)]  // Test for a power of 2, binary representation is 10000000000 (1 '1')
-    public void CountOnesInBinary_ReturnsCorrectCount_ForComplexNumbers(int number, int expectedCount)
+    [InlineData(0)]
+    [InlineData(-1)]
+    [InlineData(-100)]
+    public void FindNthNumberWithThreeOnes_InvalidN_ThrowsArgumentException(long n)
     {
-        // Act
-        output.WriteLine($"Counting ones for complex number {number}...");
-        string binaryRepresentation = Convert.ToString(number, 2);
-        output.WriteLine($"Binary representation: {binaryRepresentation}");
-
-        int result = BinarySequenceService.CountOnesInBinary(number);
-        output.WriteLine($"Expected count of '1's: {expectedCount}, Actual count of '1's: {result}");
-
-        // Assert
-        Assert.Equal(expectedCount, result);
+        // Act & Assert
+        Assert.Throws<ArgumentException>(() => BinarySequenceService.FindNthNumberWithThreeOnes(n));
     }
 }
