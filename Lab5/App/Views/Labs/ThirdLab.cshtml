@@ -1,0 +1,75 @@
+﻿@model ThirdLabViewModel
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабіринт (Лабораторна 3)</title>
+    <script src="/js/lab3Scripts.js"></script>
+    <link rel="stylesheet" href="~/css/lab3Styles.css" asp-append-version="true"/>
+</head>
+<body>
+    <h1>Розв'язок лабіринту</h1>
+<p> Допитливий школяр Петя дуже любить програмувати. Одного разу він настільки захопився цією справою, що заснув за комп'ютером! Пете наснилося, що він потрапив в альтернативну реальність.
+    Альтернативна реальність є прямокутним лабіринтом, який можна зобразити у вигляді таблиці розміром R × C клітин. Щоб не запізнитися школу, Пете потрібно знайти вихід із лабіринту. 
+    Початкова позиція Петі позначається символом 'S', вихід альтернативної реальності – 'E'. За один хід Петя переміщається в одну з чотирьох суміжних клітин (ліворуч, праворуч, вниз, вгору). 
+    Якщо клітина зайнята стіною (символ X), то Петя пройти в неї не може. У деяких клітинах розташовані двері із замками одного з чотирьох кольорів ('R', 'G', 'B', 'Y'). Для проходу в цю клітину, необхідно мати ключ певного кольору. Оскільки ключі багаторазові,
+    Володар альтернативної реальності пропонує Пете купити ключі, щоб пройти до виходу. У нашого героя зовсім небагато грошей із собою, тому йому хочеться витратити якнайменше грошей і при цьому пройти до виходу. 
+    Визначити мінімальну суму, яку потрібно витратити на ключі.</p>
+    <h3>Вхідні дані</h3>
+    <p>Задайте розмір лабіринту, вартість ключів та сам лабіринт.</p>
+
+<div class="container">
+    <div class="form-container">
+        <form method="post">
+            <h4>Введіть дані АБО</h4>
+            <button type="button" onclick="useExample()">Використати приклад</button><br/><br/>
+            <label for="rows">Кількість рядків (R):</label>
+            <input type="number" id="rows" name="Rows" min="1" max="50" onchange="generateLabyrinthInputs()" required/>
+
+            <label for="cols">Кількість стовпців (C):</label>
+            <input type="number" id="cols" name="Cols" min="1" max="50" onchange="generateLabyrinthInputs()" required/>
+
+            <h4>Вартість ключів:</h4>
+            <label for="keyPricesR">Червоний (R):</label>
+            <input type="number" id="keyPricesR" name="KeyPrices[R]" min="1" max="100" required/>
+            <label for="keyPricesG">Зелений (G):</label>
+            <input type="number" id="keyPricesG" name="KeyPrices[G]" min="1" max="100" required/>
+            <label for="keyPricesB">Синій (B):</label>
+            <input type="number" id="keyPricesB" name="KeyPrices[B]" min="1" max="100" required/>
+            <label for="keyPricesY">Жовтий (Y):</label>
+            <input type="number" id="keyPricesY" name="KeyPrices[Y]" min="1" max="100" required/><br/><br/>
+            
+            <h4>Лабіринт:</h4>
+            <p>*Клітинки лабіринту відображають після заповнення поля Кількість стовпців/рядків</p>
+            <div id="labyrinthContainer"></div>
+
+            <button type="submit">Знайти мінімальну вартість</button>
+        </form>
+    </div>
+    <div class="example-container">
+        <h4>Приклад</h4>
+        <div class="labyrinth-example">
+            6 6<br />
+            1 5 3 1<br />
+            XXXXXX<br />
+            XS.X.X<br />
+            X..R.X<br />
+            X.XXBX<br />
+            X.G.EX<br />
+            XXXXXX
+        </div>
+    </div>
+</div>
+    @if (Model.Result != null)
+    {
+        <h3>Результат:</h3>
+        <p>Мінімальна сума грошей: <strong>@Model.Result</strong></p>
+    }
+    else if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <h3>Помилка:</h3>
+        <p>@Model.ErrorMessage</p>
+    }
+</body>
+</html>
