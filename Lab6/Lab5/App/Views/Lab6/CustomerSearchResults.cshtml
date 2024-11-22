@@ -1,0 +1,44 @@
+﻿@model List<CustomerFullModel>
+
+<h1>Customer Search Results</h1>
+
+@if (Model == null || !Model.Any())
+{
+    <p>No results found for the specified criteria.</p>
+}
+else
+{
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Customer ID</th>
+            <th>Contact Histories</th>
+            <th>Product Holdings</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.CustomerId</td>
+                <td>
+                    <ul>
+                        @foreach (var contact in customer.ContactHistories)
+                        {
+                            <li>@contact.ContactDatetime - @contact.ContactDetails</li>
+                        }
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        @foreach (var product in customer.CustomerProductHoldings)
+                        {
+                            <li>@product.ProductName - @product.DateAcquired</li>
+                        }
+                    </ul>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

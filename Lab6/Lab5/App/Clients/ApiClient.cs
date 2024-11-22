@@ -1,4 +1,5 @@
 ﻿using App.Models;
+using Microsoft.AspNetCore.WebUtilities;
 
 namespace App.Clients;
 
@@ -56,5 +57,18 @@ public class ApiClient
         response.EnsureSuccessStatusCode();
         return await response.Content.ReadFromJsonAsync<CustomerProductHoldingDetailsViewModel>();
     }
-
+    
+    public async Task<List<SpecialOfferViewModel>?> GetSpecialOffersAsync()
+    {
+        var response = await _httpClient.GetAsync("/api/special-offers");
+        response.EnsureSuccessStatusCode();
+        return await response.Content.ReadFromJsonAsync<List<SpecialOfferViewModel>>();
+    }
+    
+    public async Task<List<CustomerFullModel>> SearchCustomersAsync(string query)
+    {
+        var response = await _httpClient.GetAsync($"/api/customers/search?{query}");
+        response.EnsureSuccessStatusCode();
+        return await response.Content.ReadFromJsonAsync<List<CustomerFullModel>>();
+    }
 }
