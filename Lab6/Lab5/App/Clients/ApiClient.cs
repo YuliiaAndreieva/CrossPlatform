@@ -24,4 +24,37 @@ public class ApiClient
         response.EnsureSuccessStatusCode();
         return await response.Content.ReadFromJsonAsync<CustomerProfileDetailsViewModel>();
     }
+    
+    public async Task<List<RefContactOutcomeViewModel>> GetRefContactOutcomesAsync()
+    {
+        var response = await _httpClient.GetAsync("/api/ref-contact-outcomes");
+
+        response.EnsureSuccessStatusCode();
+        return await response.Content.ReadFromJsonAsync<List<RefContactOutcomeViewModel>>();
+    }
+
+    public async Task<RefContactOutcomeViewModel?> GetRefContactOutcomeDetailsAsync(int code)
+    {
+        var response = await _httpClient.GetAsync($"/api/ref-contact-outcomes/{code}");
+
+        response.EnsureSuccessStatusCode();
+        return await response.Content.ReadFromJsonAsync<RefContactOutcomeViewModel>();
+    }
+    
+    public async Task<List<CustomerProductHoldingViewModel>> GetCustomerProductHoldingsAsync()
+    {
+        var response = await _httpClient.GetAsync("/api/customer-product-holdings");
+
+        response.EnsureSuccessStatusCode();
+        return await response.Content.ReadFromJsonAsync<List<CustomerProductHoldingViewModel>>();
+    }
+
+    public async Task<CustomerProductHoldingDetailsViewModel?> GetCustomerProductHoldingDetailsAsync(int customerId, int productId)
+    {
+        var response = await _httpClient.GetAsync($"/api/customer-product-holdings/{customerId}/{productId}");
+
+        response.EnsureSuccessStatusCode();
+        return await response.Content.ReadFromJsonAsync<CustomerProductHoldingDetailsViewModel>();
+    }
+
 }

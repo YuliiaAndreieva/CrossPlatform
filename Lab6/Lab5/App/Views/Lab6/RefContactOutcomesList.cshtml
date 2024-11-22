@@ -9,7 +9,6 @@
     <tr>
         <th>Status Code</th>
         <th>Description</th>
-        <th>Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -17,9 +16,8 @@
     {
         <tr>
             <td>@outcome.OutcomeStatusCode</td>
-            <td>@outcome.OutcomeStatusDescription</td>
             <td>
-                <a href="/RefContactOutcomes/@outcome.OutcomeStatusCode">View Details</a>
+                <a asp-controller="RefContactOutcomes" asp-action="Details" asp-route-id="@outcome.OutcomeStatusCode">View Details</a>
             </td>
         </tr>
     }
