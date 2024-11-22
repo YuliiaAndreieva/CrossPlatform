@@ -1,3 +1,4 @@
+using App.Middlewares;
 using App.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -57,7 +58,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseStaticFiles();
-
+app.UseMiddleware<TimezoneMiddleware>();
 app.UseRouting();
 
 app.UseAuthentication();
