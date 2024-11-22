@@ -10,7 +10,16 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     switch (databaseProvider)
     {
         case "Sqlite":
-            options.UseSqlite(builder.Configuration.GetConnectionString("Sqlite"), o => o.MigrationsAssembly("App.Sqlite"));
+            options.UseSqlite(builder.Configuration.GetConnectionString("Sqlite"), o => o.MigrationsAssembly("App.SQLite"));
+            break;
+        case "SqlServer":
+            options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"), o => o.MigrationsAssembly("App.SqlServer"));
+            break;
+        case "Postgres":
+            options.UseNpgsql(builder.Configuration.GetConnectionString("Postgres"), o => o.MigrationsAssembly("App.Postgres"));
+            break;
+        case "InMemory":
+            options.UseInMemoryDatabase("InMemory");
             break;
         default:
             throw new InvalidOperationException("Invalid database provider");
