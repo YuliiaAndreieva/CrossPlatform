@@ -6,7 +6,7 @@ public class AuthDelegatingHandler : DelegatingHandler
 {
     private readonly IHttpClientFactory _httpClientFactory;
     private readonly IConfiguration _configuration;
-    private string _accessToken;
+    private string? _accessToken;
 
     public AuthDelegatingHandler(IHttpClientFactory httpClientFactory, IConfiguration configuration)
     {

@@ -6,7 +6,7 @@
 
 <h1>Customer Search Results</h1>
 
-@if (Model == null || !Model.Any())
+@if (!Model.Any())
 {
     <p>No results found for the specified criteria.</p>
 }
@@ -27,17 +27,23 @@ else
                 <td>@customer.CustomerId</td>
                 <td>
                     <ul>
-                        @foreach (var contact in customer.ContactHistories)
+                        @if (customer.ContactHistories != null)
                         {
-                            <li>@contact.ContactDatetime - @contact.ContactDetails</li>
+                            foreach (var contact in customer.ContactHistories)
+                            {
+                                <li>@contact.ContactDatetime - @contact.ContactDetails</li>
+                            }
                         }
                     </ul>
                 </td>
                 <td>
                     <ul>
-                        @foreach (var product in customer.CustomerProductHoldings)
+                        @if (customer.CustomerProductHoldings != null)
                         {
-                            <li>@product.ProductName - @product.DateAcquired</li>
+                            foreach (var product in customer.CustomerProductHoldings)
+                            {
+                                <li>@product.ProductName - @product.DateAcquired</li>
+                            }
                         }
                     </ul>
                 </td>

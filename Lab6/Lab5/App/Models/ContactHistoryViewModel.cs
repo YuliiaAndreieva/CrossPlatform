@@ -4,5 +4,5 @@ public class ContactHistoryViewModel
 {
     public DateTime ContactDatetime { get; set; }
     
-    public string ContactDetails { get; set; }
+    public required string ContactDetails { get; set; }
 }

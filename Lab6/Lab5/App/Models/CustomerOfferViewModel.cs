@@ -2,5 +2,5 @@
 
 public class CustomerOfferViewModel
 {
-    public string SpecialOfferDescription { get; set; }
+    public string? SpecialOfferDescription { get; set; }
 }

@@ -16,9 +16,12 @@
         <label>Special Offer:</label>
         <select asp-for="SpecialOfferId" style="margin-left: 1rem;">
             <option value="">-- Select Special Offer --</option>
-            @foreach (var offer in Model.SpecialOffers)
+            @if (Model.SpecialOffers != null)
             {
-                <option value="@offer.SpecialOfferId">@offer.SpecialOfferDetails</option>
+                foreach (var offer in Model.SpecialOffers)
+                {
+                    <option value="@offer.SpecialOfferId">@offer.SpecialOfferDetails</option>
+                }
             }
         </select>
     </div>

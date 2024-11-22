@@ -8,5 +8,5 @@ public class CustomerProfileViewModel
     public int CustomerId { get; set; }
     
     [JsonPropertyName("customerDetails")]
-    public string CustomerDetails { get; set; }
+    public required string CustomerDetails { get; set; }
 }

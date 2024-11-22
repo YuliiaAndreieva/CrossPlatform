@@ -1,8 +1,10 @@
 ﻿using App.Clients;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.Controllers;
 
+[Authorize]
 public class RefContactOutcomesController : Controller
 {
     private readonly ApiClient _apiClient;

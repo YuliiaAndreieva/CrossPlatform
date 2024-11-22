@@ -12,12 +12,12 @@ public class CustomerFilterViewModel
     
     public DateTime? ProductEndDate { get; set; }
     
-    public List<SpecialOfferViewModel> SpecialOffers { get; set; }
+    public List<SpecialOfferViewModel>? SpecialOffers { get; set; }
 }
 
 public class SpecialOfferViewModel
 {
     public int SpecialOfferId { get; set; }
     
-    public string SpecialOfferDetails { get; set; }
+    public string? SpecialOfferDetails { get; set; }
 }

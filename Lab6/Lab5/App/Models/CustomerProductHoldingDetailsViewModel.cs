@@ -10,7 +10,7 @@ public class CustomerProductHoldingDetailsViewModel
     
     public DateTime? DateDiscontinued { get; set; }
     
-    public string ProductName { get; set; }
+    public string? ProductName { get; set; }
     
-    public string ProductDetails { get; set; }
+    public string? ProductDetails { get; set; }
 }

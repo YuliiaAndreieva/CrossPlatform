@@ -4,7 +4,7 @@ public class CustomerProfileDetailsViewModel
 {
     public int CustomerId { get; set; }
     
-    public string CustomerDetails { get; set; }
+    public required string CustomerDetails { get; set; }
     
-    public ICollection<CustomerLoyaltyViewModel> CustomerLoyalties { get; set; }
+    public required ICollection<CustomerLoyaltyViewModel> CustomerLoyalties { get; set; }
 }

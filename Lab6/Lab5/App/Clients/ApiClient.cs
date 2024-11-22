@@ -16,7 +16,7 @@ public class ApiClient
     {
         var response = await _httpClient.GetAsync("/api/customer-profiles");
         response.EnsureSuccessStatusCode();
-        return await response.Content.ReadFromJsonAsync<List<CustomerProfileViewModel>>();
+        return (await response.Content.ReadFromJsonAsync<List<CustomerProfileViewModel>>())!;
     }
 
     public async Task<CustomerProfileDetailsViewModel?> GetCustomerDetailsAsync(int id)
@@ -31,7 +31,7 @@ public class ApiClient
         var response = await _httpClient.GetAsync("/api/ref-contact-outcomes");
 
         response.EnsureSuccessStatusCode();
-        return await response.Content.ReadFromJsonAsync<List<RefContactOutcomeViewModel>>();
+        return (await response.Content.ReadFromJsonAsync<List<RefContactOutcomeViewModel>>())!;
     }
 
     public async Task<RefContactOutcomeViewModel?> GetRefContactOutcomeDetailsAsync(int code)
@@ -47,7 +47,7 @@ public class ApiClient
         var response = await _httpClient.GetAsync("/api/customer-product-holdings");
 
         response.EnsureSuccessStatusCode();
-        return await response.Content.ReadFromJsonAsync<List<CustomerProductHoldingViewModel>>();
+        return (await response.Content.ReadFromJsonAsync<List<CustomerProductHoldingViewModel>>())!;
     }
 
     public async Task<CustomerProductHoldingDetailsViewModel?> GetCustomerProductHoldingDetailsAsync(int customerId, int productId)
@@ -69,6 +69,6 @@ public class ApiClient
     {
         var response = await _httpClient.GetAsync($"/api/customers/search?{query}");
         response.EnsureSuccessStatusCode();
-        return await response.Content.ReadFromJsonAsync<List<CustomerFullModel>>();
+        return (await response.Content.ReadFromJsonAsync<List<CustomerFullModel>>())!;
     }
 }

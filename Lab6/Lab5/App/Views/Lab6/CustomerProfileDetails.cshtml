@@ -32,9 +32,14 @@
     @foreach (var loyalty in Model.CustomerLoyalties)
     {
         <tr>
-            <td>@loyalty.DateFirstPurchase</td>
-            <td>@loyalty.DateLastPurchase</td>
-            <td>@loyalty.OtherLoyaltyDetails</td>
+            <td>
+                @if (loyalty != null)
+                {
+                    @loyalty.DateFirstPurchase@:</td>
+                    <td>@loyalty.DateLastPurchase</td>
+                    @:<td>@loyalty.OtherLoyaltyDetails
+                }
+            </td>
         </tr>
     }
     </tbody>

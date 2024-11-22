@@ -2,11 +2,13 @@
 using App.Clients;
 using App.Models;
 using App.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace App.Controllers;
 
+[Authorize]
 public class CustomerProfileController : Controller
 {
     private readonly ApiClient _apiClient;
@@ -55,7 +57,7 @@ public class CustomerProfileController : Controller
 
             var filterViewModel = new CustomerFilterViewModel
             {
-                SpecialOffers = specialOffers
+                SpecialOffers = specialOffers!
             };
 
             return View("~/Views/Lab6/CustomerFilterList.cshtml", filterViewModel);

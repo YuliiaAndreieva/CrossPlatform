@@ -8,5 +8,5 @@ public class CustomerLoyaltyViewModel
     
     public DateTime DateLastPurchase { get; set; }
     
-    public string OtherLoyaltyDetails { get; set; }
+    public string? OtherLoyaltyDetails { get; set; }
 }
