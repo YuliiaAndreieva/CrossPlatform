@@ -1,0 +1,27 @@
+﻿@model List<RefContactOutcomeViewModel>
+@{
+    Layout = "~/Views/Shared/_Lab6Layout.cshtml";
+}
+
+<h1>Contact Outcomes</h1>
+<table border="1" style="width: 100%; text-align: left;">
+    <thead>
+    <tr>
+        <th>Status Code</th>
+        <th>Description</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var outcome in Model)
+    {
+        <tr>
+            <td>@outcome.OutcomeStatusCode</td>
+            <td>@outcome.OutcomeStatusDescription</td>
+            <td>
+                <a href="/RefContactOutcomes/@outcome.OutcomeStatusCode">View Details</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -9,4 +9,6 @@ public interface IAuthService
     Task<bool> CreateUserAsync(RegisterViewModel model);
 
     Task<User?> GetUserAsync(string id);
+
+    Task<string> GetApiAccessTokenAsync();
 }

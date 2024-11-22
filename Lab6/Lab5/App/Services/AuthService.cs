@@ -113,7 +113,7 @@ public class AuthService : IAuthService
         }
     }
     
-    private async Task<string> GetApiAccessTokenAsync()
+    public async Task<string> GetApiAccessTokenAsync()
     {
         var client = _httpClientFactory.CreateClient();
         var tokenEndpoint = $"https://{_authOptions.Domain}/oauth/token";
@@ -123,8 +123,7 @@ public class AuthService : IAuthService
             grant_type = "client_credentials",
             client_id = _authOptions.ClientId,
             client_secret = _authOptions.ClientSecret,
-            //audience = "lab6Api"
-            audience = _authOptions.Audience
+            audience = "lab6Api"
         });
 
         response.EnsureSuccessStatusCode();
