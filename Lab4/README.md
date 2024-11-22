@@ -1,8 +1,8 @@
 ﻿# Lab4
 ## Запуск застосунку
-Перейдіть у папку застосунку, з цієї папки виконайте:
+Перейдіть у папку застосунку (Lab4), з цієї папки виконайте:
 ```bash
-cd App
+cd Lab4/App
 ```
 Запустіть застосунок:
 ```bash
@@ -20,10 +20,12 @@ dotnet run -- set-path -p {path}
 ```
 Запуск Baget
 ```bash
-cd App
+cd Lab4/App
 dotnet pack --configuration Release
 dotnet nuget push ./bin/Release/Y_Andreieva.1.0.0.nupkg --source http://localhost:5000/v3/index.json
 ```
+Тепер можна переглянути пакет на http://localhost:5555/
+
 Запуск віртуальних машин:
 ```bash
 vagrant up

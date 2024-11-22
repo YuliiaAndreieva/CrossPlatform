@@ -31,6 +31,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lab4", "Lab4", "{B102AA37-9
 	ProjectSection(SolutionItems) = preProject
 		Lab4\Vagrantfile = Lab4\Vagrantfile
 		Lab4\README.md = Lab4\README.md
+		Lab4\baget.env = Lab4\baget.env
+		Lab4\docker-compose.yml = Lab4\docker-compose.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLib", "Lab4\ClassLib\ClassLib.csproj", "{D16D056E-97F9-4380-A18C-CC9770A02D53}"
