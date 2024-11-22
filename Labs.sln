@@ -12,6 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lab2", "Lab2", "{B670AED2-460B-42A6-A620-CFFDC2408ECD}"
 	ProjectSection(SolutionItems) = preProject
 		Lab2\INPUT.TXT = Lab2\INPUT.TXT
+		Lab2\README.md = Lab2\README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "Lab2\App\App.csproj", "{FB5AB4CC-4DBE-446E-BA48-6E2EA9E144AC}"
@@ -21,6 +22,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lab3", "Lab3", "{37372D3D-EDCC-4576-8EEB-B23901CA58E3}"
 	ProjectSection(SolutionItems) = preProject
 		Lab3\INPUT.TXT = Lab3\INPUT.TXT
+		Lab3\README.md = Lab3\README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "Lab3\App\App.csproj", "{926548AC-8288-4469-82C4-D761F0D1CCF4}"
