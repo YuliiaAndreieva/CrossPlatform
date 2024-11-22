@@ -20,9 +20,11 @@ dotnet run -- set-path -p {path}
 ```
 Запуск Baget
 ```bash
-cd Lab4/App
+cd Lab4
+docker-compose up
+cd App
 dotnet pack --configuration Release
-dotnet nuget push ./bin/Release/Y_Andreieva.1.0.0.nupkg --source http://localhost:5000/v3/index.json
+dotnet nuget push ./bin/Release/Y_Andreieva.1.0.0.nupkg --source http://localhost:5555/v3/index.json
 ```
 Тепер можна переглянути пакет на http://localhost:5555/
 

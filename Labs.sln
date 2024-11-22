@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lab3", "Lab3", "{37372D3D-E
 	ProjectSection(SolutionItems) = preProject
 		Lab3\INPUT.TXT = Lab3\INPUT.TXT
 		Lab3\README.md = Lab3\README.md
+		Lab3\baget.env = Lab3\baget.env
+		Lab4\docker-compose.yml = Lab4\docker-compose.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "Lab3\App\App.csproj", "{926548AC-8288-4469-82C4-D761F0D1CCF4}"
@@ -72,6 +74,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.SqlServer", "Lab6\App.SqlServer\App.SqlServer.csproj", "{D7242650-0159-47B2-8F3D-5520FEF33ACD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Postgres", "Lab6\App.Postgres\App.Postgres.csproj", "{D487BE65-9AF7-4448-96CD-62A3AB70F9FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Y_Andreieva", "Lab3\Y_Andreieva\Y_Andreieva.csproj", "{921C6E4C-4F65-4E6E-959E-50683E4C10D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -150,6 +154,10 @@ Global
 		{D487BE65-9AF7-4448-96CD-62A3AB70F9FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D487BE65-9AF7-4448-96CD-62A3AB70F9FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D487BE65-9AF7-4448-96CD-62A3AB70F9FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{921C6E4C-4F65-4E6E-959E-50683E4C10D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{921C6E4C-4F65-4E6E-959E-50683E4C10D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{921C6E4C-4F65-4E6E-959E-50683E4C10D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{921C6E4C-4F65-4E6E-959E-50683E4C10D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DB3C71FB-1E94-45B1-94C9-5F9FEB58B742} = {50689F37-95B3-42BA-B527-D0F4506492FE}
@@ -170,5 +178,6 @@ Global
 		{1612BAA7-8A38-4868-9383-A4F26FD0093E} = {AAB87C72-5C8C-4A55-8AAC-48135EFB9936}
 		{D7242650-0159-47B2-8F3D-5520FEF33ACD} = {5FC4521D-8544-491F-B004-032C1AB09977}
 		{D487BE65-9AF7-4448-96CD-62A3AB70F9FE} = {5FC4521D-8544-491F-B004-032C1AB09977}
+		{921C6E4C-4F65-4E6E-959E-50683E4C10D9} = {37372D3D-EDCC-4576-8EEB-B23901CA58E3}
 	EndGlobalSection
 EndGlobal

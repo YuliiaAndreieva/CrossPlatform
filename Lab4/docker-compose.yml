@@ -1,5 +1,4 @@
-﻿
-services:
+﻿services:
   nuget-server:
     image: loicsharma/baget:latest
     container_name: nuget-server

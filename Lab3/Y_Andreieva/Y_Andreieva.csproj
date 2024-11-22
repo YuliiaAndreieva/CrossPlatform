@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+
+        <PackageId>y_andreieva</PackageId>
+        <Version>1.0.0</Version>
+        <Authors>Yulia</Authors>
+        <Description>Packahe for lab3 from Yuliia</Description>
+        <PackageTags>console, utility</PackageTags>
+    </PropertyGroup>
+</Project>
