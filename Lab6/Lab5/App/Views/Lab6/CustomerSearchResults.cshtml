@@ -1,5 +1,9 @@
 ﻿@model List<CustomerFullModel>
 
+@{
+    Layout = "~/Views/Shared/_Lab6Layout.cshtml";
+}
+
 <h1>Customer Search Results</h1>
 
 @if (Model == null || !Model.Any())

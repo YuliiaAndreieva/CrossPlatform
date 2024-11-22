@@ -16,8 +16,8 @@ public class CustomerProductHoldings : Controller
     {
         _context = context;
     }
-
-    [Route("api/customer-product-holdings")]
+    
+    [HttpGet("api/customer-product-holdings")]
     public IActionResult GetCustomerProductHoldings()
     {
         var productHoldings = _context.CustomerProductHoldings
@@ -32,8 +32,8 @@ public class CustomerProductHoldings : Controller
 
         return Ok(productHoldings);
     }
-
-    [Route("api/customer-product-holdings/{customerId}/{productId}")]
+    
+    [HttpGet("api/customer-product-holdings/{customerId}/{productId}")]
     public IActionResult GetCustomerProductHoldingDetails(int customerId, int productId)
     {
         var productHoldingDetails = _context.CustomerProductHoldings

@@ -16,14 +16,14 @@ public class CustomerProfilesController : Controller
         _context = context;
     }
     
-    [Route("api/customer-profiles")]
+    [HttpGet("api/customer-profiles")]
     public IActionResult Index()
     {
         var profiles = _context.CustomerProfiles.ToList();
         return Ok(profiles);
     }
     
-    [Route("api/customer-profiles/{id}")]
+    [HttpGet("api/customer-profiles/{id}")]
     public IActionResult Details(int id)
     {
         var profile = _context.CustomerProfiles

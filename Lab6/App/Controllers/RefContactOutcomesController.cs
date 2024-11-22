@@ -13,15 +13,15 @@ public class RefContactOutcomesController : Controller
     {
         _context = context;
     }
-
-    [Route("api/ref-contact-outcomes")]
+    
+    [HttpGet("api/ref-contact-outcomes")]
     public IActionResult Index()
     {
         var outcomes = _context.RefContactOutcomes.ToList();
         return Ok(outcomes);
     }
-
-    [Route("api/ref-contact-outcomes/{code}")]
+    
+    [HttpGet("api/ref-contact-outcomes/{code}")]
     public IActionResult Details(int code)
     {
         var outcome = _context.RefContactOutcomes.FirstOrDefault(o => o.OutcomeStatusCode == code);

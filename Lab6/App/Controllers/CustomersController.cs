@@ -7,7 +7,6 @@ namespace App.Controllers;
 
 [ApiController]
 [Authorize]
-
 public class CustomersController : Controller
 {
     private readonly AppDbContext _context;
@@ -17,8 +16,8 @@ public class CustomersController : Controller
     {
         _context = context;
     }
-
-    [Route("api/customers/search")]
+    
+    [HttpGet("api/customers/search")]
     public IActionResult SearchCustomers(
         DateTime? contactStartDate,
         DateTime? contactEndDate,

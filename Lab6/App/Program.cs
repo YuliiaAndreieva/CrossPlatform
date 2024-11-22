@@ -42,6 +42,10 @@ builder.Services.AddAuthentication(options =>
     options.Authority = "https://dev-qyulsuvmi4i083bm.us.auth0.com/";
     options.Audience = "lab6Api";
 });
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
@@ -52,13 +56,10 @@ using (var scope = app.Services.CreateScope())
     seeder.Seed();
 }
 
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Home/Error");
-}
-
-app.UseStaticFiles();
 app.UseMiddleware<TimezoneMiddleware>();
+app.UseStaticFiles();
+app.UseSwagger();
+app.UseSwaggerUI();
 app.UseRouting();
 
 app.UseAuthentication();

@@ -15,8 +15,8 @@ public class CustomerOfferController : Controller
     {
         _context = context;
     }
-
-    [Route("api/special-offers")]
+    
+    [HttpGet("api/special-offers")]
     public IActionResult Index()
     {
         var offers = _context.SpecialOffers.ToList();
