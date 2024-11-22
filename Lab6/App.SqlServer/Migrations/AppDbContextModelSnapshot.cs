@@ -49,7 +49,7 @@ namespace App.SqlServer.Migrations
 
                     b.HasIndex("OutcomeStatusCode");
 
-                    b.ToTable("ContactHistory");
+                    b.ToTable("ContactHistories");
                 });
 
             modelBuilder.Entity("App.Models.CustomerAsset", b =>
@@ -75,7 +75,7 @@ namespace App.SqlServer.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("CustomerAsset");
+                    b.ToTable("CustomerAssets");
                 });
 
             modelBuilder.Entity("App.Models.CustomerLoyalty", b =>
@@ -95,7 +95,7 @@ namespace App.SqlServer.Migrations
 
                     b.HasKey("CustomerId");
 
-                    b.ToTable("CustomerLoyalty");
+                    b.ToTable("CustomerLoyalties");
                 });
 
             modelBuilder.Entity("App.Models.CustomerOffer", b =>
@@ -113,7 +113,7 @@ namespace App.SqlServer.Migrations
 
                     b.HasIndex("SpecialOfferId");
 
-                    b.ToTable("CustomerOffer");
+                    b.ToTable("CustomerOffers");
                 });
 
             modelBuilder.Entity("App.Models.CustomerPreference", b =>
@@ -128,7 +128,7 @@ namespace App.SqlServer.Migrations
 
                     b.HasIndex("FactorCode");
 
-                    b.ToTable("CustomerPreference");
+                    b.ToTable("CustomerPreferences");
                 });
 
             modelBuilder.Entity("App.Models.CustomerProductHolding", b =>
@@ -149,7 +149,7 @@ namespace App.SqlServer.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("CustomerProductHolding");
+                    b.ToTable("CustomerProductHoldings");
                 });
 
             modelBuilder.Entity("App.Models.CustomerProfile", b =>
@@ -166,7 +166,7 @@ namespace App.SqlServer.Migrations
 
                     b.HasKey("CustomerId");
 
-                    b.ToTable("CustomerProfile");
+                    b.ToTable("CustomerProfiles");
                 });
 
             modelBuilder.Entity("App.Models.HouseholdMember", b =>
@@ -185,16 +185,13 @@ namespace App.SqlServer.Migrations
 
                     b.HasKey("CustomerId");
 
-                    b.ToTable("HouseholdMember");
+                    b.ToTable("HouseholdMembers");
                 });
 
             modelBuilder.Entity("App.Models.RefAssetType", b =>
                 {
                     b.Property<int>("AssetTypeCode")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AssetTypeCode"));
 
                     b.Property<string>("AssetTypeDescription")
                         .IsRequired()
@@ -202,16 +199,13 @@ namespace App.SqlServer.Migrations
 
                     b.HasKey("AssetTypeCode");
 
-                    b.ToTable("RefAssetType");
+                    b.ToTable("RefAssetTypes");
                 });
 
             modelBuilder.Entity("App.Models.RefContactOutcome", b =>
                 {
                     b.Property<int>("OutcomeStatusCode")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OutcomeStatusCode"));
 
                     b.Property<string>("OutcomeStatusDescription")
                         .IsRequired()
@@ -219,16 +213,13 @@ namespace App.SqlServer.Migrations
 
                     b.HasKey("OutcomeStatusCode");
 
-                    b.ToTable("RefContactOutcome");
+                    b.ToTable("RefContactOutcomes");
                 });
 
             modelBuilder.Entity("App.Models.RefPreferenceFactor", b =>
                 {
                     b.Property<int>("FactorCode")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FactorCode"));
 
                     b.Property<string>("FactorDescription")
                         .IsRequired()
@@ -236,7 +227,7 @@ namespace App.SqlServer.Migrations
 
                     b.HasKey("FactorCode");
 
-                    b.ToTable("RefPreferenceFactor");
+                    b.ToTable("RefPreferenceFactors");
                 });
 
             modelBuilder.Entity("App.Models.ServiceAndProduct", b =>
@@ -257,7 +248,7 @@ namespace App.SqlServer.Migrations
 
                     b.HasKey("ProductId");
 
-                    b.ToTable("ServiceAndProduct");
+                    b.ToTable("ServicesAndProducts");
                 });
 
             modelBuilder.Entity("App.Models.SpecialOffer", b =>
@@ -274,7 +265,7 @@ namespace App.SqlServer.Migrations
 
                     b.HasKey("SpecialOfferId");
 
-                    b.ToTable("SpecialOffer");
+                    b.ToTable("SpecialOffers");
                 });
 
             modelBuilder.Entity("App.Models.ContactHistory", b =>

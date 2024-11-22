@@ -4,6 +4,32 @@ namespace App.Models;
 
 public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
 {
+    public DbSet<CustomerProfile> CustomerProfiles { get; set; }
+    
+    public DbSet<CustomerLoyalty> CustomerLoyalties { get; set; }
+    
+    public DbSet<CustomerPreference> CustomerPreferences { get; set; }
+    
+    public DbSet<RefPreferenceFactor> RefPreferenceFactors { get; set; }
+    
+    public DbSet<ContactHistory> ContactHistories { get; set; }
+    
+    public DbSet<RefContactOutcome> RefContactOutcomes { get; set; }
+    
+    public DbSet<CustomerProductHolding> CustomerProductHoldings { get; set; }
+    
+    public DbSet<ServiceAndProduct> ServicesAndProducts { get; set; }
+    
+    public DbSet<CustomerAsset> CustomerAssets { get; set; }
+    
+    public DbSet<RefAssetType> RefAssetTypes { get; set; }
+    
+    public DbSet<HouseholdMember> HouseholdMembers { get; set; }
+    
+    public DbSet<CustomerOffer> CustomerOffers { get; set; }
+    
+    public DbSet<SpecialOffer> SpecialOffers { get; set; }
+    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<CustomerProfile>(entity =>
@@ -60,6 +86,9 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
         
         modelBuilder.Entity<RefPreferenceFactor>(entity =>
         {
+            entity.Property(rpf => rpf.FactorCode)
+                .ValueGeneratedNever();;
+
             entity.HasKey(rpf => rpf.FactorCode);
 
             entity.HasMany(rpf => rpf.CustomerPreferences)
@@ -83,6 +112,9 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
         
         modelBuilder.Entity<RefContactOutcome>(entity =>
         {
+            entity.Property(rpf => rpf.OutcomeStatusCode)
+                .ValueGeneratedNever();;
+            
             entity.HasKey(rco => rco.OutcomeStatusCode);
             
             entity.HasMany(rpf => rpf.ContactHistories)
@@ -150,6 +182,9 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
         
         modelBuilder.Entity<RefAssetType>(entity =>
         {
+            entity.Property(rpf => rpf.AssetTypeCode)
+                .ValueGeneratedNever();;
+            
             entity.HasKey(rat => rat.AssetTypeCode);
             
             entity.HasMany(rpf => rpf.CustomerAssets)

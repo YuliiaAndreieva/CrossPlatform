@@ -38,6 +38,14 @@ builder.Services.AddAuthentication(options =>
 });
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    var logger = scope.ServiceProvider.GetRequiredService<ILogger<Seeder>>();
+    var seeder = new Seeder(dbContext, logger);
+    seeder.Seed();
+}
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
