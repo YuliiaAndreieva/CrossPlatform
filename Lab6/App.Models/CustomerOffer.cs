@@ -8,9 +8,7 @@ public class CustomerOffer
     
     public DateTime DateOfferAccepted { get; set; }
     
-
     public CustomerProfile Customer { get; set; }
-    
     
     public SpecialOffer SpecialOffer { get; set; }
 }

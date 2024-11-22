@@ -8,6 +8,5 @@ public class ServiceAndProduct
     
     public string ProductDetails { get; set; }
     
-
     public ICollection<CustomerProductHolding> CustomerProductHoldings { get; set; }
 }

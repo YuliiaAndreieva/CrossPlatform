@@ -10,7 +10,6 @@ public class CustomerProductHolding
     
     public DateTime? DateDiscontinued { get; set; }
     
-
     public CustomerProfile Customer { get; set; }
     
     public ServiceAndProduct ServiceAndProduct { get; set; }

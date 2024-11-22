@@ -6,6 +6,5 @@ public class RefAssetType
     
     public string AssetTypeDescription { get; set; }
     
-
     public ICollection<CustomerAsset> CustomerAssets { get; set; }
 }

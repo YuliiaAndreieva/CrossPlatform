@@ -6,6 +6,5 @@ public class SpecialOffer
     
     public string SpecialOfferDetails { get; set; }
     
-
     public ICollection<CustomerOffer> CustomerOffers { get; set; }
 }
