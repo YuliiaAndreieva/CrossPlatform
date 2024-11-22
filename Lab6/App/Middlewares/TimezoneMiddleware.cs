@@ -22,12 +22,12 @@ public class TimezoneMiddleware
 
             if (query.TryGetValue("startDate", out var startDate))
             {
-                newQuery["startDate"] = ConvertToUkrainianTime(startDate);
+                newQuery["startDate"] = ConvertToUkrainianTime(startDate!);
             }
 
             if (query.TryGetValue("endDate", out var endDate))
             {
-                newQuery["endDate"] = ConvertToUkrainianTime(endDate);
+                newQuery["endDate"] = ConvertToUkrainianTime(endDate!);
             }
             
             var uri = new UriBuilder(context.Request.Scheme, context.Request.Host.Host, context.Request.Host.Port ?? 80)
