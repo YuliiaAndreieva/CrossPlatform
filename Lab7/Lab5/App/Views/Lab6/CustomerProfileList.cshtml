@@ -1,0 +1,31 @@
+﻿@model List<CustomerProfileViewModel>
+
+@{
+    Layout = "~/Views/Shared/_Lab6Layout.cshtml";
+}
+
+<h1>Customer Profiles</h1>
+<table border="1" style="width: 100%; text-align: left;">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Details</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var profile in Model)
+    {
+        <tr>
+            <td>@profile.CustomerId</td>
+            <td>@profile.CustomerDetails</td>
+            <td>
+                <a asp-controller="CustomerProfile" asp-action="Details" asp-route-id="@profile.CustomerId">View Details</a>
+            </td>
+            <td>
+                 <a href="@Url.Action("GetAllHouseholdMembersDetails", "HouseholdMembers", new { id = @profile.CustomerId })" class="btn btn-warning"> Household Details(v2)</a>
+            </td>    
+        </tr>
+    }
+    </tbody>
+</table>

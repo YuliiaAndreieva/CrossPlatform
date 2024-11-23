@@ -1,0 +1,35 @@
+﻿@model CustomerProductHoldingDetailsViewModel
+@{
+    Layout = "~/Views/Shared/_Lab6Layout.cshtml";
+}
+
+<h1>Customer Product Holding Details</h1>
+
+<table border="1">
+    <tr>
+        <th>Customer ID:</th>
+        <td>@Model.CustomerId</td>
+    </tr>
+    <tr>
+        <th>Product ID:</th>
+        <td>@Model.ProductId</td>
+    </tr>
+    <tr>
+        <th>Date Acquired:</th>
+        <td>@Model.DateAcquired</td>
+    </tr>
+    <tr>
+        <th>Date Discontinued:</th>
+        <td>@Model.DateDiscontinued</td>
+    </tr>
+    <tr>
+        <th>Product Name:</th>
+        <td>@Model.ProductName</td>
+    </tr>
+    <tr>
+        <th>Product Details:</th>
+        <td>@Model.ProductDetails</td>
+    </tr>
+</table>
+
+<a href="/CustomerProductHoldings">Back to List</a>

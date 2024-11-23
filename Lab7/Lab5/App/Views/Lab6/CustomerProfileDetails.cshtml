@@ -1,0 +1,46 @@
+﻿@model CustomerProfileDetailsViewModel
+
+@{
+    Layout = "~/Views/Shared/_Lab6Layout.cshtml";
+}
+
+
+<h1>Customer Profile Details</h1>
+<table border="1" style="width: 80%; text-align: left;">
+    <tr>
+        <th>Customer ID</th>
+        <td>@Model.CustomerId</td>
+    </tr>
+    <tr>
+        <th>Details</th>
+        <td>@Model.CustomerDetails</td>
+    </tr>
+</table>
+
+<h2>Related Data</h2>
+
+<h3>Loyalty Information</h3>
+<table border="1" style="width: 80%; text-align: left;">
+    <thead>
+    <tr>
+        <th>First Purchase</th>
+        <th>Last Purchase</th>
+        <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var loyalty in Model.CustomerLoyalties)
+    {
+        <tr>
+            <td>
+                @if (loyalty != null)
+                {
+                    @loyalty.DateFirstPurchase@:</td>
+                    <td>@loyalty.DateLastPurchase</td>
+                    @:<td>@loyalty.OtherLoyaltyDetails
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

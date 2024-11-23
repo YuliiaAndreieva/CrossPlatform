@@ -1,0 +1,13 @@
+.container2 {
+    display: flex;
+    justify-content: space-between;
+}
+.form-container2, .example-container2 {
+    width: 48%;
+}
+.example-box2 {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}

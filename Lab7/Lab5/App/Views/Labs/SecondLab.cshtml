@@ -1,0 +1,59 @@
+﻿@model SecondLabViewModel
+@{
+    Layout = "~/Views/Shared/_Lab5Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Закупівля шкарпеток (Лабораторна 2)</title>
+    <script src="/js/lab2Scripts.js"></script>
+    <link rel="stylesheet" href="~/css/lab2Styles.css" asp-append-version="true"/>
+</head>
+<body>
+    <h1>Закупівля шкарпеток</h1>
+    <p>Розрахуйте мінімальну вартість закупівлі шкарпеток за заданими постачальниками.</p>
+
+<div class="container2">
+    <div class="form-container2">
+        <form method="post">
+            <label for="totalSocks">Кількість пар шкарпеток:</label>
+            <input type="number" id="totalSocks" name="TotalSocks" min="1" max="10000" required /><br /><br />
+
+            <label for="supplierCount">Кількість постачальників:</label>
+            <input type="number" id="supplierCount" name="SupplierCount" min="1" max="100" onchange="generateSupplierInputs()" required /><br /><br />
+            <p>*Можливість для вхідних даних для кожного постачальника з'являється, після заповнення поля Кількість постачальників</p>
+
+            <button type="button" onclick="useExample()">Використати приклад</button><br /><br />
+
+            <div id="suppliersContainer"></div>
+
+            <button type="submit">Розрахувати</button>
+        </form>
+    </div>
+        
+    <div class="example-container2">
+        <div class="example-box2">
+            <h3>Приклад</h3>
+            <p><strong>Вхідні дані:</strong></p>
+            <ul>
+                <li>Кількість пар шкарпеток: <strong>9</strong></li>
+                <li>Кількість постачальників: <strong>2</strong></li>
+                <li>Постачальник 1: <strong>Кількість у пачці (a1) = 1</strong>, <strong>Ціна пачки (b1) = 1</strong></li>
+                <li>Постачальник 2: <strong>Кількість у пачці (a2) = 10</strong>, <strong>Ціна пачки (b2) = 8</strong></li>
+            </ul>
+        </div>
+    </div>
+</div>    
+@if (Model.Result.HasValue)
+{
+    <h3>Результат</h3>
+    <p>Мінімальна вартість закупівлі: <strong>@Model.Result</strong></p>
+}
+else if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <h3>Помилка</h3>
+    <p>@Model.ErrorMessage</p>
+}
+</body>
+</html>

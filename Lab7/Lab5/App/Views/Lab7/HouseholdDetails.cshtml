@@ -1,0 +1,22 @@
+﻿@model HouseholdMemberViewModel
+@{
+    Layout = "~/Views/Shared/_Lab7Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Household Member Details</title>
+</head>
+<body>
+<h1>Household Member Details</h1>
+
+<div class="details">
+    <p><strong>Customer ID:</strong> @Model.CustomerId</p>
+    <p><strong>Number of Members:</strong> @Model.MemberCount</p>
+    <p><strong>Number of Children:</strong> @Model.CountOfChildren</p>
+    <p><strong>Number of Wage Earners:</strong> @Model.CountOfWageEarners</p>
+</div>
+
+<a href="/api/v2/household-members">Back to List</a>
+</body>
+</html>

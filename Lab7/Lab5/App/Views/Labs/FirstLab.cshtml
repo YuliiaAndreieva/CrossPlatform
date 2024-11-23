@@ -1,0 +1,35 @@
+﻿@model FirstLabModel
+@{
+    Layout = "~/Views/Shared/_Lab5Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Пошук N-го члена послідовності (Лабораторна 1)</title>
+</head>
+<body>
+<h1>Пошук N-го члена послідовності</h1>
+<p>Дано послідовність: 7, 11, 13, 14, 19, 21, 22, 25, ..., знайдіть N-й член цієї послідовності.</p>
+
+<h3>Вхідні дані</h3>
+<p>Введіть ціле число N (1 ≤ N ≤ 2147483647), щоб знайти N-й член послідовності.</p>
+
+<form method="post">
+    <label for="inputNumber">Введіть N:</label>
+    <input type="number" id="inputNumber" name="InputNumber" min="1" max="2147483647" required />
+    <button type="submit">Знайти</button>
+</form>
+
+@if (Model.Result.HasValue)
+{
+    <h3>Вихідні дані</h3>
+    <p>N-й член послідовності: <strong>@Model.Result</strong></p>
+}
+else if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <h3>Помилка</h3>
+    <p>@Model.ErrorMessage</p>
+}
+</body>
+</html>

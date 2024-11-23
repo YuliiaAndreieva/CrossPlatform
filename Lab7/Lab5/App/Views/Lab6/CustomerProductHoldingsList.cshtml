@@ -1,0 +1,31 @@
+﻿@model List<CustomerProductHoldingViewModel>
+@{
+    Layout = "~/Views/Shared/_Lab6Layout.cshtml";
+}
+
+<h1>Customer Product Holdings</h1>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Customer ID</th>
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var holding in Model)
+    {
+        <tr>
+            <td>@holding.CustomerId</td>
+            <td>@holding.ProductId</td>
+            <td>@holding.ProductName</td>
+            <td>
+                <a href="/CustomerProductHoldings/Details/@holding.CustomerId/@holding.ProductId">View Details</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+

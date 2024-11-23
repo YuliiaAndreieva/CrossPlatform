@@ -1,0 +1,38 @@
+﻿@model CustomerFilterViewModel
+@{
+    Layout = "~/Views/Shared/_Lab6Layout.cshtml";
+}
+
+<h1>Filter Customers</h1>
+
+<form asp-controller="CustomerProfile" asp-action="Search" method="post" style="display: flex; flex-direction: column; gap: 1rem;">
+    <div>
+        <label>Contact Date Range:</label>
+        <input type="date" asp-for="ContactStartDate" style="margin-left: 1rem;" /> to
+        <input type="date" asp-for="ContactEndDate" style="margin-left: 0.5rem;" />
+    </div>
+
+    <div>
+        <label>Special Offer:</label>
+        <select asp-for="SpecialOfferId" style="margin-left: 1rem;">
+            <option value="">-- Select Special Offer --</option>
+            @if (Model.SpecialOffers != null)
+            {
+                foreach (var offer in Model.SpecialOffers)
+                {
+                    <option value="@offer.SpecialOfferId">@offer.SpecialOfferDetails</option>
+                }
+            }
+        </select>
+    </div>
+
+    <div>
+        <label>Product Date Acquired Range:</label>
+        <input type="date" asp-for="ProductStartDate" style="margin-left: 1rem;" /> to
+        <input type="date" asp-for="ProductEndDate" style="margin-left: 0.5rem;" />
+    </div>
+
+    <div>
+        <button type="submit" style="margin-top: 1rem;">Search</button>
+    </div>
+</form>

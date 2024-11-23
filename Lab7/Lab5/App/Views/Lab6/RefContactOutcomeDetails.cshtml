@@ -1,0 +1,16 @@
+﻿@model RefContactOutcomeViewModel
+@{
+    Layout = "~/Views/Shared/_Lab6Layout.cshtml";
+}
+
+<h1>Contact Outcome Details</h1>
+<table border="1" style="width: 50%; text-align: left;">
+    <tr>
+        <th>Status Code</th>
+        <td>@Model.OutcomeStatusCode</td>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <td>@Model.OutcomeStatusDescription</td>
+    </tr>
+</table>
