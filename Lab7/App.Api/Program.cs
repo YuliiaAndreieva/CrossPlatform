@@ -11,7 +11,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     switch (databaseProvider)
     {
         case "Sqlite":
-            options.UseSqlite(builder.Configuration.GetConnectionString("Sqlite"), o => o.MigrationsAssembly("App.Sqllite"));
+            options.UseSqlite(builder.Configuration.GetConnectionString("Sqlite"), o => o.MigrationsAssembly("App.SQLite"));
             break;
         case "SqlServer":
             options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"), o => o.MigrationsAssembly("App.SqlServer"));

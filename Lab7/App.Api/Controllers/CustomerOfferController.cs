@@ -8,7 +8,7 @@ namespace App.Controllers;
 [Authorize]
 public class CustomerOfferController : Controller
 {
-    private AppDbContext _context;
+    private readonly AppDbContext _context;
 
     public CustomerOfferController(
         AppDbContext context)
