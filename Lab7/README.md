@@ -46,6 +46,15 @@ dotnet run
 API_URL=http://localhost:3001
 ```
 
+Також для запуску треба додати свої credentials в getAccessToken.js:
+```  
+"Auth0": {
+    "ClientId": "2bIsALcPDhQN6GJ1RG6JHkMS3JftH1W8",
+    "Domain": "dev-qyulsuvmi4i083bm.us.auth0.com",
+    "ClientSecret": ""
+  },
+```
+
 Якщо піднімаєте в докері, то замініть на відповідний 8080.
 
 Перейдіть у папку застосунку, з цієї папки виконайте:
