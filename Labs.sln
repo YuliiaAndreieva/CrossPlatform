@@ -100,6 +100,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.SqlServer", "Lab7\App.SqlServer\App.SqlServer.csproj", "{D556153E-9516-4346-A9E3-5E338DA8F31E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lab13", "Lab13", "{F5378B95-41B4-4BD1-932D-7C1A764094EA}"
+	ProjectSection(SolutionItems) = preProject
+		Lab13\README.md = Lab13\README.md
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLib", "Lab13\ClassLib\ClassLib.csproj", "{14FB7FFF-AFE3-4E85-AAF1-06EE9B98D149}"
 EndProject
