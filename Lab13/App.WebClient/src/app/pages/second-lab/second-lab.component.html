@@ -1,0 +1,71 @@
+<div class="container">
+  <h1>Закупівля шкарпеток</h1>
+  <p>Розрахуйте мінімальну вартість закупівлі шкарпеток за заданими постачальниками.</p>
+
+  <form [formGroup]="secondLabForm" (ngSubmit)="submitForm()">
+    <div>
+      <label for="totalSocks">Кількість пар шкарпеток:</label>
+      <input
+        type="number"
+        id="totalSocks"
+        formControlName="totalSocks"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <div>
+      <label for="supplierCount">Кількість постачальників:</label>
+      <input
+        type="number"
+        id="supplierCount"
+        formControlName="supplierCount"
+        class="form-control"
+        (input)="updateSuppliers($event.target.value)"
+        required
+      />
+    </div>
+
+    <button type="button" (click)="useExample()">Використати приклад</button>
+
+    <div formArrayName="suppliers" *ngFor="let supplier of suppliers.controls; let i = index">
+      <h3>Постачальник {{ i + 1 }}</h3>
+      <div [formGroupName]="i">
+        <div>
+          <label for="packs-{{ i }}">Кількість у пачці:</label>
+          <input
+            type="number"
+            id="packs-{{ i }}"
+            formControlName="packs"
+            class="form-control"
+            required
+          />
+        </div>
+        <div>
+          <label for="price-{{ i }}">Ціна пачки:</label>
+          <input
+            type="number"
+            id="price-{{ i }}"
+            formControlName="price"
+            class="form-control"
+            required
+          />
+        </div>
+      </div>
+    </div>
+
+    <button type="submit">Розрахувати</button>
+  </form>
+
+
+  <div *ngIf="result !== null" class="result">
+    <h3>Результат</h3>
+    <p>Мінімальна вартість закупівлі: <strong>{{ result }}</strong></p>
+  </div>
+
+  <div *ngIf="errorMessage" class="error">
+    <h3>Помилка</h3>
+    <p>{{ errorMessage }}</p>
+  </div>
+</div>
+

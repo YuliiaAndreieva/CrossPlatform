@@ -1,0 +1,10 @@
+{
+  "domain": "dev-qyulsuvmi4i083bm.us.auth0.com",
+  "clientId": "lZLYefcVUAJFvtRtKvXAog2jd3heZEFM",
+  "authorizationParams": {
+    "audience": "lab6Api"
+  },
+  "apiUri": "http://localhost:3001",
+  "appUri": "http://localhost:4200",
+  "errorPath": "/error"
+}
