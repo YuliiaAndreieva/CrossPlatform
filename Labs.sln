@@ -80,6 +80,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lab7", "Lab7", "{36DFE5DA-9B96-4CD8-A07D-E2FD447B3B87}"
 	ProjectSection(SolutionItems) = preProject
 		Lab7\docker-compose.yml = Lab7\docker-compose.yml
+		Lab7\README.md = Lab7\README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Api", "Lab7\App.Api\App.Api.csproj", "{A340E4FB-715A-4D3C-AE2C-779FF047BBB0}"

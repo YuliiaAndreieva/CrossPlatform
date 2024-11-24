@@ -1,0 +1,5 @@
+﻿module.exports = {
+    testEnvironment: "node",
+    setupFiles: ["dotenv/config"], 
+    testMatch: ["**/?(*.)+(test).js"],
+};
