@@ -5,9 +5,11 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <RootNamespace>App</RootNamespace>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="DotNetEnv" Version="3.1.1" />
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.11" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.2"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
@@ -18,13 +20,10 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="7.0.0" />
     </ItemGroup>
-
-
     <ItemGroup>
       <ProjectReference Include="..\App.Models\App.Models.csproj" />
       <ProjectReference Include="..\App.Postgres\App.Postgres.csproj" />
       <ProjectReference Include="..\App.SQLite\App.SQLite.csproj" />
       <ProjectReference Include="..\App.SqlServer\App.SqlServer.csproj" />
     </ItemGroup>
-
 </Project>

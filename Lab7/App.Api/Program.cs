@@ -1,17 +1,19 @@
 using App.Middlewares;
 using App.Models;
+using DotNetEnv;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+Env.Load();
 
-var databaseProvider = builder.Configuration["DatabaseProvider"] ?? "Sqlite"; 
+var databaseProvider = Environment.GetEnvironmentVariable("DATABASE_PROVIDER");
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     switch (databaseProvider)
     {
-        case "Sqlite":
-            options.UseSqlite(builder.Configuration.GetConnectionString("Sqlite"), o => o.MigrationsAssembly("App.SQLite"));
+        case "SQLite":
+            options.UseSqlite(builder.Configuration.GetConnectionString("SQLite"), o => o.MigrationsAssembly("App.SQLite"));
             break;
         case "SqlServer":
             options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"), o => o.MigrationsAssembly("App.SqlServer"));
